@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clinical Decision-Support Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo-section">
+                    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Medical Logo" class="logo">
+                    <div class="header-text">
+                        <h1>Clinical Decision-Support Chatbot</h1>
+                        <p class="tagline">AI-Powered Medical Diagnosis Assistant</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="section-card">
+                    <h2>Patient Symptoms</h2>
+                    <form id="symptomForm">
+                        <div class="form-group">
+                            <label for="symptoms">Enter patient symptoms:</label>
+                            <textarea 
+                                id="symptoms" 
+                                name="symptoms" 
+                                class="symptoms-input" 
+                                placeholder="Example: fever, cough, sore throat, headache..."
+                                rows="6"
+                                required></textarea>
+                            <small class="help-text">Please describe all symptoms separated by commas or in natural language</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Analyze Symptoms</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                
+                <!-- Predicted Diseases -->
+                <div class="section-card disease-card">
+                    <h2>Predicted Diseases</h2>
+                    <div id="diseasesContainer" class="disease-list">
+                        <p class="loading">Analyzing symptoms...</p>
+                    </div>
+                </div>
+
+                <!-- Reasoning -->
+                <div class="section-card reasoning-card">
+                    <h2>Clinical Reasoning</h2>
+                    <div id="reasoningContainer" class="reasoning-content">
+                        <p class="loading">Generating reasoning...</p>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="section-card description-card">
+                    <h2>Disease Description</h2>
+                    <div id="descriptionContainer" class="description-content">
+                        <p class="loading">Loading description...</p>
+                    </div>
+                </div>
+
+                <!-- Medications -->
+                <div class="section-card medication-card">
+                    <h2>Medications</h2>
+                    <div id="medicationsContainer" class="medication-list">
+                        <p class="loading">Loading medications...</p>
+                    </div>
+                </div>
+
+                <!-- Precautions -->
+                <div class="section-card precaution-card">
+                    <h2>Precautions</h2>
+                    <div id="precautionsContainer" class="precaution-list">
+                        <p class="loading">Loading precautions...</p>
+                    </div>
+                </div>
+
+                <!-- Diet Recommendations -->
+                <div class="section-card diet-card">
+                    <h2>Recommended Diet</h2>
+                    <div id="dietContainer" class="diet-content">
+                        <p class="loading">Loading diet recommendations...</p>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <section class="disclaimer-section">
+                    <div class="disclaimer-card">
+                        <h3>⚠️ MEDICAL DISCLAIMER - MANDATORY</h3>
+                        <div id="disclaimerContainer">
+                            <p>This information is for clinical decision support only and is NOT a final medical diagnosis.</p>
+                            <p><strong>IMPORTANT:</strong></p>
+                            <ul class="disclaimer-list">
+                                <li>Always consult with a qualified healthcare professional for proper diagnosis</li>
+                                <li>In case of medical emergency, call emergency services immediately</li>
+                                <li>Self-diagnosis based on this tool may delay critical treatment</li>
+                                <li>Individual medical conditions require personalized clinical assessment</li>
+                                <li>This tool does not account for patient-specific factors, medical history, or comorbidities</li>
+                            </ul>
+                            <p><strong>By using this tool, you acknowledge that you understand these limitations and assume full responsibility for any decisions made based on its output.</strong></p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Empty State Message -->
+            <div id="emptyState" class="empty-state">
+                <p>Enter patient symptoms above to get started with the clinical analysis.</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 Clinical Decision-Support Chatbot. All rights reserved. For medical emergencies, call emergency services.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
